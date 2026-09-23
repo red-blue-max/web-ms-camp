@@ -1,0 +1,14 @@
+# Доступ из интернета разрешён только к send.php
+<IfModule mod_authz_core.c>
+  Require all denied
+  <Files "send.php">
+    Require all granted
+  </Files>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order deny,allow
+  Deny from all
+  <Files "send.php">
+    Allow from all
+  </Files>
+</IfModule>

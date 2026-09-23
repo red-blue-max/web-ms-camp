@@ -1,0 +1,3 @@
+# Настройки бота с токеном — никогда не коммитить
+api/config.php
+telegram-config.php
