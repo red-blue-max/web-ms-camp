@@ -49,7 +49,7 @@
     if (digits(f.phone.value).length !== 10) errors.phone = 'Введите номер полностью: +7 (XXX) XXX-XX-XX';
     if (f.child_name.value.trim().length < 2) errors.child_name = 'Укажите имя ребёнка';
     var age = parseInt(f.child_age.value, 10);
-    if (!(age >= 4 && age <= 25)) errors.child_age = 'Укажите возраст числом';
+    if (!(age >= 8 && age <= 18)) errors.child_age = 'Возраст участников — от 8 до 18 лет';
     if (!form.querySelector('[name="level"]:checked')) errors.level = 'Выберите уровень подготовки';
     if (!f.consent.checked) errors.consent = 'Нужно согласие на обработку персональных данных';
 

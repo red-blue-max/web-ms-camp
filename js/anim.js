@@ -16,15 +16,6 @@
     });
   }
 
-  /* ---------- Лыжня: прорисовка при появлении ---------- */
-  document.querySelectorAll('.ski-track').forEach(function (el) {
-    if (reduce || !hasIO) { el.classList.add('is-visible'); return; }
-    var io = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { el.classList.add('is-visible'); io.disconnect(); }
-    }, { threshold: 0.2 });
-    io.observe(el);
-  });
-
   /* ---------- Счётчики 0 → N ---------- */
   var counters = document.querySelectorAll('[data-count]');
   if (!reduce && hasIO) {

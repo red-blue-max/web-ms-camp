@@ -95,7 +95,7 @@ $errors = [];
 if (mb_strlen($parent) < 2) $errors[] = 'parent_name';
 if (strlen(preg_replace('/\D/', '', $phone)) !== 11) $errors[] = 'phone';
 if (mb_strlen($child) < 2) $errors[] = 'child_name';
-if (!ctype_digit($age) || (int) $age < 4 || (int) $age > 25) $errors[] = 'child_age';
+if (!ctype_digit($age) || (int) $age < 8 || (int) $age > 18) $errors[] = 'child_age';
 if (!in_array($level, $levels, true)) $errors[] = 'level';
 if (!$consent) $errors[] = 'consent';
 if ($errors) respond(422, ['ok' => false, 'error' => 'validation', 'fields' => $errors]);

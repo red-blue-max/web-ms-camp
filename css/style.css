@@ -16,7 +16,6 @@
   --white: #fff;
 
   --c-swim: #1E88E5;
-  --c-ski: #6BC4E8;
   --c-flex: #F2A93B;
   --c-meal: #3DBE8B;
   --c-rest: #8FA3BD;
@@ -283,8 +282,7 @@ body.nav-open { overflow: hidden; }
 .tl span { font-weight: 600; }
 .tl em { display: block; font-style: normal; font-weight: 400; font-size: 15px; color: var(--muted); }
 .tl--swim::before { border-color: var(--c-swim); background: var(--c-swim); }
-.tl--ski::before { border-color: var(--c-ski); background: var(--c-ski); }
-.tl--flex::before { border-color: var(--c-flex); background: var(--c-flex); }
+.tl--flex::before, .tl--gym::before { border-color: var(--c-flex); background: var(--c-flex); }
 .tl--meal::before { border-color: var(--c-meal); }
 .tl--rest::before { border-color: var(--c-rest); }
 .tl--swim { background: linear-gradient(90deg, rgba(30, 136, 229, .10), transparent 80%); border-radius: 10px; }
@@ -293,7 +291,6 @@ body.nav-open { overflow: hidden; }
 .legend li { display: inline-flex; align-items: center; gap: 8px; }
 .legend li::before { content: ""; width: 12px; height: 12px; border-radius: 50%; }
 .legend__swim::before { background: var(--c-swim); }
-.legend__ski::before { background: var(--c-ski); }
 .legend__flex::before { background: var(--c-flex); }
 .legend__meal::before { border: 3px solid var(--c-meal); }
 .legend__rest::before { border: 3px solid var(--c-rest); }
@@ -661,22 +658,6 @@ body.nav-open { overflow: hidden; }
 @keyframes swimSplash { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(-6px); } }
 @media (min-width: 1024px) { .days__tabs { padding-bottom: 58px; } }
 
-/* ---------- «О сборах»: лыжня прорисовывается на фоне ---------- */
-#about { position: relative; overflow: clip; }
-#about > .container { position: relative; z-index: 1; }
-.ski-track { position: absolute; left: 0; top: 40px; width: 100%; height: 260px; pointer-events: none; }
-.ski-track path {
-  fill: none; stroke: #A9C2DD; stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 1600; stroke-dashoffset: 1600;
-  vector-effect: non-scaling-stroke;
-}
-/* следы от палок — точки вдоль лыжни, проявляются после неё */
-.ski-track .ski-track__poles { stroke-width: 4; stroke-dasharray: 1 38; stroke-dashoffset: 0; opacity: 0; transition: opacity 1.2s 2.4s; }
-.js .ski-track.is-visible .ski-track__poles { animation: none; opacity: .9; }
-html:not(.js) .ski-track__poles { opacity: .9; }
-.js .ski-track.is-visible path { animation: skiDraw 3.2s cubic-bezier(.4, 0, .2, 1) forwards; }
-.js .ski-track.is-visible path + path { animation-delay: .15s; }
-html:not(.js) .ski-track path { stroke-dashoffset: 0; }
-@keyframes skiDraw { to { stroke-dashoffset: 0; } }
 
 /* ---------- Стоимость: волна по низу карточки ---------- */
 .price__card > * { position: relative; z-index: 1; }
@@ -719,7 +700,5 @@ html:not(.js) .ski-track path { stroke-dashoffset: 0; }
   .lane, .lane::before, .hero__bg img, .btn--shine::after, .swimmer__arm, .swimmer__leg, .swimmer__water, .swimmer__splash,
   .price__wave::before, .price__wave::after { animation: none !important; }
   .bubbles, .hero__snow { display: none; }
-  .ski-track path { stroke-dashoffset: 0; animation: none !important; }
-  .ski-track .ski-track__poles { opacity: .9; transition: none; }
   .days__swimmer { transition: none; }
 }
