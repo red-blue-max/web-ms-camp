@@ -63,11 +63,16 @@ for w in (1280, 1728):
 # ---------- Тренеры: 3:4
 coaches = {
     "kobzev": "Кобзев Денис Викторович.jpg",
-    "khutareva": "Хутарева Екатерина Евгеньевна.jpg",
     "khriplyy": "Хриплый Валерий Вадимович.jpg",
+    # когда пришлют фото — положить файл с этим именем, строка заработает сама
+    "polyakova": "Полякова Мария Сергеевна.jpg",
 }
 for slug, name in coaches.items():
-    im = crop_ratio(open_img(A / "coaches" / name), 3, 4, cy=0.5)
+    src = A / "coaches" / name
+    if not src.is_file():
+        print("нет файла, пропускаю:", name)
+        continue
+    im = crop_ratio(open_img(src), 3, 4, cy=0.5)
     for w in (480, 800):
         save(im, A / "coaches" / f"coach-{slug}", w)
 
