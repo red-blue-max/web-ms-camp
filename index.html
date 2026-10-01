@@ -26,13 +26,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@600;800&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=11">
 
   <script>document.documentElement.classList.add('js');</script>
-  <script src="js/config.js?v=10" defer></script>
-  <script src="js/main.js?v=10" defer></script>
-  <script src="js/form.js?v=10" defer></script>
-  <script src="js/anim.js?v=10" defer></script>
+  <script src="js/config.js?v=11" defer></script>
+  <script src="js/main.js?v=11" defer></script>
+  <script src="js/form.js?v=11" defer></script>
+  <script src="js/anim.js?v=11" defer></script>
 
   <script type="application/ld+json">
   {
@@ -255,9 +255,10 @@
       </article>
 
       <article class="coach reveal">
-        <!-- Фото ждём от школы. Как пришлют: положить assets/coaches/Полякова Мария Сергеевна.jpg,
-             запустить python tools/optimize-images.py и заменить этот блок на <picture>, как у других тренеров -->
-        <div class="coach__photo coach__photo--empty" aria-hidden="true"><span>МП</span><small>Фото скоро</small></div>
+        <picture class="coach__photo">
+          <source type="image/webp" srcset="assets/coaches/coach-polyakova-480.webp 480w, assets/coaches/coach-polyakova-800.webp 800w" sizes="(min-width: 768px) 45vw, 100vw">
+          <img src="assets/coaches/coach-polyakova-800.jpg" srcset="assets/coaches/coach-polyakova-480.jpg 480w, assets/coaches/coach-polyakova-800.jpg 800w" sizes="(min-width: 768px) 45vw, 100vw" width="800" height="1067" loading="lazy" decoding="async" alt="Полякова Мария Сергеевна, тренер MosSwim">
+        </picture>
         <div class="coach__body">
           <span class="coach__role">Тренер школы MosSwim</span>
           <h3 class="coach__name">Полякова Мария Сергеевна</h3>
