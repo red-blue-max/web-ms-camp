@@ -90,7 +90,7 @@ $level   = $field('level', 40);
 $comment = $field('comment', 1000);
 $consent = !empty($in['consent']);
 
-$levels = ['Начинающий', 'Средний', 'Разряд / КМС / МС'];
+$levels = ['Начинающий', 'Средний', 'От 2-го взрослого до МС'];
 $errors = [];
 if (mb_strlen($parent) < 2) $errors[] = 'parent_name';
 if (strlen(preg_replace('/\D/', '', $phone)) !== 11) $errors[] = 'phone';

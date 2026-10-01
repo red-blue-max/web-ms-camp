@@ -409,10 +409,10 @@ body.nav-open { overflow: hidden; }
 .field__error:empty { margin: 0; }
 
 .choices { display: grid; gap: 8px; }
-.choice { position: relative; display: block; }
+.choice { position: relative; display: block; height: 100%; }
 .choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .choice span {
-  display: flex; align-items: center; min-height: 48px; padding: 10px 14px 10px 44px;
+  display: flex; align-items: center; height: 100%; min-height: 48px; padding: 10px 14px 10px 44px;
   background: var(--ice); border: 2px solid transparent; border-radius: var(--radius-sm);
   font-weight: 600; cursor: pointer; position: relative; transition: border-color .2s, background-color .2s;
 }
