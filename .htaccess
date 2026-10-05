@@ -1,13 +1,26 @@
 # Кодировка
 AddDefaultCharset UTF-8
 
-# Единственный адрес сайта: https:// без www
+# Единственный адрес сайта: https:// без www.
+# Правила срабатывают ТОЛЬКО для ms-camp.ru, чтобы сайт можно было проверять
+# на техническом домене Timeweb (*.tw1.ru) до переноса домена.
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # http://ms-camp.ru → https://ms-camp.ru
+  RewriteCond %{HTTP_HOST} ^(www\.)?ms-camp\.ru$ [NC]
   RewriteCond %{HTTPS} !=on
   RewriteRule ^(.*)$ https://ms-camp.ru/$1 [R=301,L]
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # www.ms-camp.ru → ms-camp.ru
+  RewriteCond %{HTTP_HOST} ^www\.ms-camp\.ru$ [NC]
+  RewriteRule ^(.*)$ https://ms-camp.ru/$1 [R=301,L]
+</IfModule>
+
+# Технический домен не должен попадать в поиск как копия сайта
+<IfModule mod_headers.c>
+  SetEnvIf Host ^(www\.)?ms-camp\.ru$ MAINHOST=1
+  Header set X-Robots-Tag "noindex, nofollow" env=!MAINHOST
 </IfModule>
 
 # Кэш статики: картинки, стили и скрипты меняются вместе с ?v=N в index.html
