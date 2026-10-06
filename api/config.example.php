@@ -26,12 +26,12 @@ return [
     // Порты 465 и 587 на хостинге открыты, mail.ru доступен.
     // SMTP_PASS — это пароль для внешних приложений, а НЕ пароль от почты:
     // mail.ru → Настройки → Безопасность → Пароли для внешних приложений.
-    'MAIL_TO'   => 'mosswim2025@mail.ru',
+    'MAIL_TO'   => 'ms-camp@inbox.ru',
     'SMTP_HOST' => 'smtp.mail.ru',
     'SMTP_PORT' => '465',
-    'SMTP_USER' => 'mosswim2025@mail.ru',
+    'SMTP_USER' => 'ms-camp@inbox.ru',
     'SMTP_PASS' => '',
-    'MAIL_FROM' => 'mosswim2025@mail.ru',  // должен совпадать с SMTP_USER
+    'MAIL_FROM' => 'ms-camp@inbox.ru',  // должен совпадать с SMTP_USER
 
     // Если форма и сайт на разных доменах — перечислите домены сайта:
     // 'ALLOWED_ORIGINS' => ['https://ms-camp.ru'],
