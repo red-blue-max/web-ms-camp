@@ -7,6 +7,9 @@ AddDefaultCharset UTF-8
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Проверка сертификата Let's Encrypt должна проходить по http — не перенаправляем её
+  RewriteRule ^\.well-known/acme-challenge/ - [L]
+
   # http://ms-camp.ru → https://ms-camp.ru
   RewriteCond %{HTTP_HOST} ^(www\.)?ms-camp\.ru$ [NC]
   RewriteCond %{HTTPS} !=on
