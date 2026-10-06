@@ -1,23 +1,23 @@
 # Кодировка
 AddDefaultCharset UTF-8
 
-# Единственный адрес сайта: https:// без www.
-# Правила срабатывают ТОЛЬКО для ms-camp.ru, чтобы сайт можно было проверять
-# на техническом домене Timeweb (*.tw1.ru) до переноса домена.
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Проверка сертификата Let's Encrypt должна проходить по http — не перенаправляем её
+  # Проверка сертификата Let's Encrypt должна проходить по http — её не трогаем
   RewriteRule ^\.well-known/acme-challenge/ - [L]
 
-  # http://ms-camp.ru → https://ms-camp.ru
-  RewriteCond %{HTTP_HOST} ^(www\.)?ms-camp\.ru$ [NC]
-  RewriteCond %{HTTPS} !=on
+  # www.ms-camp.ru → ms-camp.ru, протокол сохраняем.
+  # Переадресацию http → https включает ХОСТИНГ (в настройках сайта Timeweb),
+  # здесь её делать нельзя: SSL терминируется на nginx, Apache видит обычный http,
+  # и правило зацикливается (ERR_TOO_MANY_REDIRECTS).
+  RewriteCond %{HTTP_HOST} ^www\.ms-camp\.ru$ [NC]
+  RewriteCond %{HTTPS} =on [OR]
+  RewriteCond %{HTTP:X-Forwarded-Proto} =https
   RewriteRule ^(.*)$ https://ms-camp.ru/$1 [R=301,L]
 
-  # www.ms-camp.ru → ms-camp.ru
   RewriteCond %{HTTP_HOST} ^www\.ms-camp\.ru$ [NC]
-  RewriteRule ^(.*)$ https://ms-camp.ru/$1 [R=301,L]
+  RewriteRule ^(.*)$ http://ms-camp.ru/$1 [R=301,L]
 </IfModule>
 
 # Технический домен не должен попадать в поиск как копия сайта
