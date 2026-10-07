@@ -11,7 +11,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 OUT = BASE / "ms-camp-site.zip"
-SKIP_DIRS = {"_source", "tools", "avito", "worker", ".git", ".claude"}
+SKIP_DIRS = {"_source", "tools", "avito", "worker", "marketing", ".git", ".claude"}
 SKIP_FILES = {"README.md", ".gitignore", OUT.name}
 ORIGINALS = ("Отель*.jpg", "Бас*.jpg", "Лого.jpg", "Кобзев*.jpg", "Хриплый*.jpg",
              "Хутарева*.jpg", "Полякова*.jpg")
