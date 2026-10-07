@@ -1,4 +1,5 @@
 # Настройки бота с токеном — никогда не коммитить
 api/config.php
 telegram-config.php
+site-config.php
 ms-camp-site.zip

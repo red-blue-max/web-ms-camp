@@ -98,8 +98,8 @@ python -m http.server 8080
 | Telegram | сайт → Cloudflare Worker → бот | бот @BotFather + бесплатный аккаунт Cloudflare |
 | Почта | сайт → SMTP mail.ru → ящик | пароль для внешних приложений в mail.ru |
 
-Настройки лежат в файле `telegram-config.php` уровнем выше `public_html`
-(для этого хостинга: `/home/c/ct044139/ms-camp.ru/telegram-config.php`).
+Настройки лежат в файле `site-config.php` уровнем выше `public_html`
+(для этого хостинга: `/home/c/ct044139/ms-camp.ru/site-config.php`).
 Шаблон со всеми полями — `api/config.example.php`.
 
 ### 4.1. Бот в Telegram
@@ -119,7 +119,7 @@ python -m http.server 8080
    - `TELEGRAM_CHAT_ID` — ваш chat_id;
    - `RELAY_SECRET` — любая длинная случайная строка.
 4. Скопируйте адрес воркера вида `https://mosswim-relay.ВАШ-ЛОГИН.workers.dev`.
-5. В `telegram-config.php` на хостинге заполните `TELEGRAM_RELAY_URL` и `RELAY_SECRET`
+5. В `site-config.php` на хостинге заполните `TELEGRAM_RELAY_URL` и `RELAY_SECRET`
    (секрет — тот же, что в настройках воркера).
 
 Бесплатного тарифа Cloudflare хватает с огромным запасом: 100 000 запросов в сутки.
@@ -127,7 +127,7 @@ python -m http.server 8080
 ### 4.3. Письмо на почту
 
 1. Зайдите в mail.ru под `ms-camp@inbox.ru` → **Настройки → Безопасность → Пароли для внешних приложений** → создайте пароль.
-2. В `telegram-config.php` заполните `SMTP_PASS` этим паролем. Остальные поля уже заполнены в шаблоне.
+2. В `site-config.php` заполните `SMTP_PASS` этим паролем. Остальные поля уже заполнены в шаблоне.
 3. Проверьте тестовой заявкой. Если письма нет — посмотрите «Спам» и логи ошибок в панели Timeweb.
 
 Если `SMTP_PASS` не заполнять, сайт попробует отправить письмо функцией `mail()` — работает,

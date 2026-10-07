@@ -28,9 +28,11 @@ function respond(int $code, array $body): void {
 
 /* ---------- Конфигурация ---------- */
 $config = [];
+$dirAbove = dirname($_SERVER['DOCUMENT_ROOT'] ?? __DIR__);
 foreach ([
-    dirname($_SERVER['DOCUMENT_ROOT'] ?? __DIR__) . '/telegram-config.php',
-    __DIR__ . '/config.php',
+    $dirAbove . '/site-config.php',       // основное имя: настройки почты и Telegram
+    $dirAbove . '/telegram-config.php',   // старое имя, тоже понимаем
+    __DIR__ . '/config.php',              // запасной вариант, если выше положить нельзя
 ] as $file) {
     if (is_file($file)) { $config = (array) require $file; break; }
 }
